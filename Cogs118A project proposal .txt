@@ -1,0 +1,132 @@
+﻿Project Description
+You will design and execute a machine learning project. There are a few constraints on the nature of the allowed project.
+* The problem addressed will not be a "toy problem" or "common training students problem" like mtcars, iris, palmer penguins etc.
+* The dataset will have >1k observations and >5 variables. I'd prefer more like >10k observations and >10 variables. A general rule is that if you have >100x more observations than variables, your solution will likely generalize a lot better. The goal of training a supervised machine learning model is to learn the underlying pattern in a dataset in order to generalize well to unseen data, so choosing a large dataset is very important.
+
+* The project will include a model selection and/or feature selection component where you will be looking for the best setup to maximize the performance of your ML system.
+
+* You will evaluate the performance of your ML system using more than one appropriate metric
+* You will be writing a report describing and discussing these accomplishments
+Feel free to delete this description section when you hand in your proposal.
+Peer Review
+You will all have an opportunity to look at the Project Proposals of other groups to fuel your creativity and get more ideas for how you can improve your own projects.
+Both the project proposal and project checkpoint will have peer review.
+Names
+Hopefully your team is at least this good. Obviously you should replace these with your names.
+   * Girish Senthil
+   * Grant Liu
+   * Maya Xu
+
+
+Abstract
+This section should be short and clearly stated. It should be a single paragraph <200 words. It should summarize:
+   * what your goal/problem is
+   * what the data used represents and how they are measured
+   * what you will be doing with the data
+   * howl performance/success will be measured
+The data shows the number of certain causes of deaths for multiple countries from 2000 to 2019. The goal of our project is to predict the amount and types of deaths in future years given the trends of the last three decades. This can be applied both globally and locally for a specific country. To test the accuracy of our algorithm, we will compare the results to another source that contains the data of death rates and death types for the years 2019 onwards. Success will be measured based on how closely the predictions line up with the actual reported deaths. 
+Background
+There are people passing away everyday due to various causes. The Global Burden of Disease is a major global study on the causes of death and disease published in the medical journal The Lance [1]. With such data collection, people in the past had already done research on the top least/most death counts in the world, and the top causes of death in different countries. Behind the different causes of death in certain areas around the world, there are also important factors increasing such causes that should be taken into consideration. According to the World Health Organization, income is one of those factors. People living in a low-income country are far more likely to die of a communicable disease than a noncommunicable disease. Diarrhoeal diseases are more significant as a cause of death in low-income countries [2]. In our project, taking all the above information into consideration, we want to see the top causes of death, analyze the potential reasons behind it, and eventually further predict the causes of death in certain areas based on the dataset we got.
+
+
+Fill in the background and discuss the kind of prior work that has gone on in this research area here. Use inline citation to specify which references support which statements. You can do that through HTML footnotes (demonstrated here). I used to reccommend Markdown footnotes (google is your friend) because they are simpler but recently I have had some problems with them working for me whereas HTML ones always work so far. So use the method that works for you, but do use inline citations. Here is an example of inline citation. After government genocide in the 20th century, real birds were replaced with surveillance drones designed to look just like birds[1]. Use a minimum of 2 or 3 citations, but we prefer more [2]. You need enough citations to fully explain and back up important facts. Remember you are trying to explain why someone would want to answer your question or why your hypothesis is in the form that you've stated.
+Problem Statement
+Clearly describe the problem that you are solving. Avoid ambiguous words. The problem described should be well defined and should have at least one ML-relevant potential solution. Additionally, describe the problem thoroughly such that it is clear that the problem is quantifiable (the problem can be expressed in mathematical or logical terms), measurable (the problem can be measured by some metric and clearly observed), and replicable (the problem can be reproduced and occurs more than once).
+Death is a very tragic matter that eventually affects everyone. However, while it may seem like a random event, there are patterns that can be extrapolated from how people die. For example, death by infectious diseases are much more common in third-world countries than first-world countries. While this may seem like a simple and obvious case, there are many more trends about death hidden in the data. This is the problem we will attempt to solve. By analyzing the data we hope to better understand how death affects people around the world. This can be expressed through the data points, which include the number of deaths of a specific cause in a year for a specified country. As a specific example, based on the trends of previous years, we may find out that death by cardiovascular disease is increasing in Norway. While not direct proof, this may underline a growing health crisis of unhealthy living. By measuring how many people die in the years of the dataset, we hope to predict the number of future deaths. 
+Data
+   * Possible datasets:
+   * https://www.kaggle.com/datasets/ivanchvez/causes-of-death-our-world-in-data?select=20222703+Causes+Of+Death+Clean+Output+V2.0.csv
+   * https://ghdx.healthdata.org/gbd-results-tool
+   * https://www.who.int/data/gho/info/gho-odata-api
+   * 8200 observations, 36 variables present within the first dataset listed under possible datasets. The following datasets were used in order to create the dataset listed on kaggle. 
+   * A typical observation will have the region or entity (e.g. Afghanistan) with the country code, year as well as a variable for death type with the observation for each variable being the total in that year (e.g. Deaths - Malaria = 200). A majority of the variables in this dataset are the different types of Deaths, example variables include Malaria, Self-Harm, Executions, etc.
+   * Critical variables include the Entity and the year. The other variables all represent different categories of causes of death.
+   * Certain country codes are not filled out; this may have to be iteratively corrected across the dataset for all missing variables. Deaths by execution have a high amount of missing values. Given that this dataset chronologically begins in 1990, contextually it makes sense that there are not a lot of values for executions as many regions no longer have a large number of executions. Further research can be done in order to formally be able to claim that executions were not a substantial contributor to most countries’ death counts. Terrorism followed with a large amount of missing values, so along with executions both variables can be examined with contextual background information from other datasets or articles (most probably amnesty international). 
+   * All other variables do not have a significant amount of missing data (<10% missing). It would be interesting to be able to split the different causes of death by age as well as gender in order to analyze whether these demographics are significantly different between causes of death in different regions and different years.
+Proposed Solution
+In this section, clearly describe a solution to the problem. The solution should be applicable to the project domain and appropriate for the dataset(s) or input(s) given. Provide enough detail (e.g., algorithmic description and/or theoretical properties) to convince us that your solution is applicable. Make sure to describe how the solution will be tested.
+If you know details already, describe how (e.g., library used, function calls) you plan to implement the solution in a way that is reproducible.
+If it is appropriate to the problem statement, describe a benchmark model[3] against which your solution will be compared.
+We will attempt to solve this problem by using machine learning algorithms to predict the amount of future deaths and their causes, allowing countries to better allocate resources to respond to the most pressing types of deaths occurring within their borders. We will do this by analyzing trends throughout the years 1990 to 2019 to see the rate at which certain types of deaths increase, decrease, or stay constant. We can also use this data to analyze global health trends to see what health matters are impacting our lives the most. To test our solution we will use reliable data from another source, such as the World Health Organization, to compare the reported deaths with our actual predictions. For example, we can compare our prediction for the amount of deaths by cardiovascular disease in 2020 with the actual reported amount and express our comparison as a fraction to check the accuracy of our prediction. A prediction of 80,000 deaths for a report of 100,000 deaths would be represented as 80,000/100,000 which is 80% accuracy. Alternatively we can express our accuracy using percentage error. 
+Evaluation Metrics
+Propose at least one evaluation metric that can be used to quantify the performance of both the benchmark model and the solution model. The evaluation metric(s) you propose should be appropriate given the context of the data, the problem statement, and the intended solution. Describe how the evaluation metric(s) are derived and provide an example of their mathematical representations (if applicable). Complex evaluation metrics should be clearly defined and quantifiable (can be expressed in mathematical or logical terms).
+Given that our problem that we are trying to solve is the projected amount of deaths in each region based upon previous year’s trends, and our solution of using classification of each region and its year based upon the different death variables, there are ways we can validate our solution.
+The primary method in which we can evaluate our model and its predictive power is by removing certain years from the dataset after training the model in order to identify if our model is able to predict close values for each of the death variables given a region and the year that we removed. We can compare these predicted values to the actual value. With this method it is important that each region is sampled proportionally, so stratified sampling will be used in order to reduce bias and variance in our test and training subsets.
+In order to quantify the error of the ML model when predicting the labels (Regions or Year), we can use a simple 0-1 loss where the number of incorrect predictions is divided by the number of samples in the dataset. The reverse logic can be used to evaluate model accuracy.
+To boost our sample size, we can also use bootstrapping in order to increase the amount of observations that we can train our model on. For our task of classification, we can use the Leave-One-out Bootstrap technique, using between 50-200 bootstrap samples for a reliable estimate (https://arxiv.org/pdf/1811.12808.pdf).
+
+
+
+
+
+
+
+
+We can implement a version of this through a hold out method where we split our labeled dataset into a test and training set, with the model being used to fit for the training set and then being tested against our test set in order to identify if our model can predict and generalize well to data it has not seen. 
+Ethics & Privacy
+While there are no obvious ethical issues such as identifiable information or any such information regarding participants, there can be certain ethical issues such as representing a region or having biased data within our dataset. These issues can be investigated further in EDA where we can identify whether there are certain biases per region.
+As all of these variables as well as the data for each observation is queried from public data (Amnesty International, WHO, GHO), there are no issues regarding anonymity and there are no variables directly related to protected variable groups. 
+One glaring issue that may arise from our dataset(s) as well as how we are going to use them to analytically find a solution to our proposed problem is possible biases in how regions are represented, or the type of death rates that can be problematic if they are extrapolated to years that are not within the range of our dataset. This ethical issue can be handled with validation data that we can gather independent of our data sources in order to validate our results or address possible issues within our model. 
+Terrorism and Executions will be a variable with many ethical implications as they are polarized topics and many of the values are missing in our first dataset. This can cause misrepresentation as well as blind spots within our analysis that could affect our model ’s efficacy and interpretations. In order to address this, further research will have to be done in order to have conclusive numbers for many of the regions for deaths related to Terrorism as well as Execution. The definition for Terrorism and Executions will also have to be explored and standardized, as Terrorism could possibly extend to public shootings and other incidents of that type. Executions can also be an overarching term for capital punishments. 
+Consider a tool to help you address the potential issues such as https://deon.drivendata.org
+Team Expectations
+Put things here that cement how you will interact/communicate as a team, how you will handle conflict and difficulty, how you will handle making decisions and setting goals/schedule, how much work you expect from each other, how you will handle deadlines, etc...
+   * Communication is always the key. During the group discussion, we respect each other. If there are conflicts or difficulties between our group members, we can have an open conversation about it and eventually reach an agreement. 
+   * We will set up meetings before each deadline. We will make sure to be fully prepared for the meetings and to show up on time. 
+Project Timeline Proposal
+Replace this with something meaningful that is appropriate for your needs. It doesn't have to be something that fits this format. It doesn't have to be set in stone... "no battle plan survives contact with the enemy". But you need a battle plan nonetheless, and you need to keep it updated so you understand what you are trying to accomplish, who's responsible for what, and what the expected due dates are for each item.
+Meeting Date
+	Meeting Time
+	Completed Before Meeting
+	Discuss at Meeting
+	1/20
+	1 PM
+	Brainstorm topics/questions (all)
+	Determine best form of communication; Discuss and decide on final project topic; discuss hypothesis; begin background research
+	1/26
+	10 AM
+	Do background research on topic (Pelé)
+	Discuss ideal dataset(s) and ethics; draft project proposal
+	2/1
+	10 AM
+	Edit, finalize, and submit proposal; Search for datasets (Beckenbaur)
+	Discuss Wrangling and possible analytical approaches; Assign group members to lead each specific part
+	2/14
+	6 PM
+	Import & Wrangle Data ,do some EDA (Maradonna)
+	Review/Edit wrangling/EDA; Discuss Analysis Plan
+	2/23
+	12 PM
+	Finalize wrangling/EDA; Begin programming for project (Cruyff)
+	Discuss/edit project code; Complete project
+	3/13
+	12 PM
+	Complete analysis; Draft results/conclusion/discussion (Carlos)
+	Discuss/edit full project
+	3/19
+	Before 11:59 PM
+	NA
+	Turn in Final Project
+	Deadline
+	To-Do
+	Meeting
+	April 24th
+	Project Proposal
+	Evening before proposal due
+	April 29th
+	Proposal feedback
+	Evening after we get our feedbacks 
+	May 13th
+	Project Checkpoint
+	Evening before checkpoint due
+	May 20th
+	Project CP Peer Review
+	
+
+	June 8th
+	Final Project Due
+	Ideally meet a couple times before in order to finalize the project details
+	While we will not be meeting every week, we have agreed as a group to communicate regularly through our team discord server in order to stay on the same page. Impromptu meetings can occur if there is a problem or issue that must be resolved/addressed. We will also meet before deadlines in order to finalize our submissions.
+Footnotes
+[1]: Global Burden of Disease. The Lancet. https://www.thelancet.com/gbd/about
+[2]: World Health Organization (2020, December) The top 10 causes of death. https://www.who.int/news-room/fact-sheets/detail/the-top-10-causes-of-death
